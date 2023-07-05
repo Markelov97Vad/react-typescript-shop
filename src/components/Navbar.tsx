@@ -4,7 +4,7 @@ import trash from '../image/shoppingbasket_114841.svg'
 import { useShoppingCart } from '../hooks/useShoppingCart';
 
 function Navbar() {
-  const { openCart, closeCart, cartQuantity} = useShoppingCart();
+  const { openCart, cartQuantity} = useShoppingCart();
 
   return ( 
     <NavbarBs sticky='top' className='bg-white shadow-sm mb-3'>
