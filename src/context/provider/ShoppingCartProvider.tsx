@@ -1,17 +1,23 @@
 import { ReactNode, useState } from "react";
 import { ShoppingCartContext } from "../ShoppingCartContext";
+import { ShoppingCart } from "../../components/ShoppingCart";
 
 type ShoppingCardProviderProps = {
   children: ReactNode
 }
 
-interface CartItemType {
+export type CartItemType = {
   id: number;
   quantity: number
 }
 
 export function ShoppingCartProvider( { children }: ShoppingCardProviderProps) {
+  const [isOpen, setIsOpen] = useState<boolean>(false)
   const [cartItems, setCartItems] = useState<CartItemType[]>([]);
+  const cartQuantity = cartItems.reduce(
+    ( prevVal, item) => item.quantity +  prevVal,
+     0
+  )
 
   const getItemQuantity = (id: number) => {
     // если значение соответствует, то вернуть найденное количество или вернуть 0
@@ -61,10 +67,26 @@ export function ShoppingCartProvider( { children }: ShoppingCardProviderProps) {
       return currentItems.filter(item => item.id !== id)
     })
   }
+  const openCart = () => {
+    setIsOpen(true)
+  }
+  const closeCart = () => {
+    setIsOpen(false)
+  }
 
   return (
-    <ShoppingCartContext.Provider value={{getItemQuantity, increaseCartQuntity, decreaseCartQuantity, removeFormCart}}>
+    <ShoppingCartContext.Provider value={{
+      openCart,
+      closeCart,
+      getItemQuantity,
+      increaseCartQuntity,
+      decreaseCartQuantity,
+      removeFormCart,
+      cartItems, 
+      cartQuantity
+      }}>
       {children}
+      <ShoppingCart isOpen={isOpen}/>
     </ShoppingCartContext.Provider>
   )
 }
