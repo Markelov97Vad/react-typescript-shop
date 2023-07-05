@@ -1,6 +1,7 @@
 import { ReactNode, useState } from "react";
 import { ShoppingCartContext } from "../ShoppingCartContext";
 import { ShoppingCart } from "../../components/ShoppingCart";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 type ShoppingCardProviderProps = {
   children: ReactNode
@@ -13,7 +14,8 @@ export type CartItemType = {
 
 export function ShoppingCartProvider( { children }: ShoppingCardProviderProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false)
-  const [cartItems, setCartItems] = useState<CartItemType[]>([]);
+  const [cartItems, setCartItems] = useLocalStorage<CartItemType[]>(
+    'shopping-cart',[]);
   const cartQuantity = cartItems.reduce(
     ( prevVal, item) => item.quantity +  prevVal,
      0
@@ -21,8 +23,6 @@ export function ShoppingCartProvider( { children }: ShoppingCardProviderProps) {
 
   const getItemQuantity = (id: number) => {
     // если значение соответствует, то вернуть найденное количество или вернуть 0
-    console.log(id);
-    
     return cartItems.find(item => item.id === id)?.quantity || 0
   }
   // добавление элементов в корзину

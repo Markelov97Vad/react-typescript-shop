@@ -11,7 +11,6 @@ type StoreItemProps = {
 
 function StoreItem({ id, name, price, imgUrl} : StoreItemProps) {
   const { getItemQuantity, increaseCartQuntity, decreaseCartQuantity, removeFormCart } = useShoppingCart();
-  console.log(id);
   const quantity = getItemQuantity(id);
 
   const handleAddOneElem = () => {
