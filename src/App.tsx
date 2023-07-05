@@ -1,18 +1,25 @@
-import React from 'react';
-import Product from './components/Product';
-import { products } from './data/products';
+import { Routes, Route } from 'react-router-dom';
+import { Container } from 'react-bootstrap';
+import Home from './page/Home';
+import Store from './page/Store';
+import About from './page/About';
+import Navbar from './components/Navbar';
+import { ShoppingCartProvider } from './context/provider/ShoppingCartProvider';
 
 function App() {
-  return (
-    <div className='container mx-auto max-w-2xl pt-5'>
-      {products.map((card) => (
-        <Product key={card.id} product={card}/>
-      ))
-      }
-      {/* <Product product={products[0]}/> */}
 
-    </div>
-  );
+  return (
+    <ShoppingCartProvider>
+      <Navbar />
+      <Container className='mb-4'>
+        <Routes>
+          <Route path='/' element={<Home />}/>
+          <Route path='/store' element={<Store />}/>
+          <Route path='/about' element={<About />}/>
+        </Routes>
+      </Container>
+    </ShoppingCartProvider>
+  )
 }
 
-export default App;
+export default App
