@@ -1,8 +1,8 @@
 <h1 align="center">me:Store</h1>
 
 <div align="center">
-  <a href="https://marsello.diploma.nomoredomains.rocks">
-    <img width="575" alt="Основной функционал приложения" src="./src/images/screen.png">
+  <a href="https://react-typescript-shop-me-store.vercel.app/">
+    <img width="575" alt="Основной функционал приложения" src="./src/image/screen.png">
   </a>
 </div>
 
