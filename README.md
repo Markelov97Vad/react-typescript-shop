@@ -6,6 +6,10 @@
   </a>
 </div>
 
+<b>Ссылки на проект:</b>
+
+Frontend: https://react-typescript-shop-me-store.vercel.app/
+
 <a name="project-description"><h2>1. Описание проекта</h2></a>
 Проект "me:Store" - онлайн магазин, создан для практического изучения TypeScript и Vite.
 
