@@ -2,13 +2,6 @@ import book from '../image/book.jpeg';
 import glasses from '../image/glass.jpeg';
 import laptop from '../image/macbook.jpeg';
 
-type StoryItems = {
-  id: number,
-  name: string,
-  price: number,
-  imgUrl: string
-}
-
 export const storeItmes =  [
   {
     id: 1,
